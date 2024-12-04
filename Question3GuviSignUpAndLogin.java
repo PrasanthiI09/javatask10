@@ -21,7 +21,6 @@ static WebDriver driver;
 		instantiatebrowser();
 		LogInLink();
 		LogInDetails();
-		close();
 	}
 	public static void instantiatebrowser() throws InterruptedException {
 			//Open Chrome Browser. Below is the only way the driver is opening in my Laptop.
@@ -44,16 +43,21 @@ static WebDriver driver;
 		//Entering all details and clicking SignUp Button
 		WebElement myElement=driver.findElement(By.xpath("//input[@class='form-control']"));
 		myElement.sendKeys("Sath");
-		myElement.sendKeys(Keys.ENTER);
+		//myElement.sendKeys(Keys.ENTER);
+		Thread.sleep(2000);
 		myElement=driver.findElement(By.xpath("//input[@type='email']"));
-		myElement.sendKeys("abm231c@gmail.com");
-		myElement.sendKeys(Keys.ENTER);
+		myElement.sendKeys("abqwmqx231c@gmail.com");
+		Thread.sleep(2000);
+		//myElement.sendKeys(Keys.ENTER);
 		myElement = driver.findElement(By.id("password"));
-		myElement.sendKeys("abqbc123");
-		myElement.sendKeys(Keys.ENTER);
+		myElement.sendKeys("aqzbcrqbc123");
+		Thread.sleep(2000);
+		//myElement.sendKeys(Keys.ENTER);
 		myElement=driver.findElement(By.xpath("//input[@id='mobileNumber']"));
-		myElement.sendKeys("9876543235");
-		myElement.sendKeys(Keys.ENTER);
+		myElement.sendKeys("9860543205");
+		Thread.sleep(2000);
+		//myElement.sendKeys(Keys.ENTER);
+		Thread.sleep(2000);
 		myElement=driver.findElement(By.id("signup-btn"));
 		myElement.click();
 		Thread.sleep(5000);
@@ -86,11 +90,11 @@ static WebDriver driver;
 		//Selecting Year PassOut
 		WebElement myElement=driver.findElement(By.xpath("//input[@id='year']"));
 		myElement.sendKeys("2006");
-		myElement.sendKeys(Keys.ENTER);
 		Thread.sleep(1000);
 		//Select Submit button
-		myElement=driver.findElement(By.xpath("//a[@id='details-btn' and @class='btn details-btn']"));
-		myElement.click();
+	    driver.findElement(By.xpath("//a[text()='Submit']")).click();
+		String SignUpTitle = driver.getTitle();
+		System.out.println("Title of the SignUp Page is -- "+SignUpTitle);
 		Thread.sleep(10000);
 	
 		}
@@ -108,15 +112,19 @@ static WebDriver driver;
 		{
 			//Enter all details to Login
 			WebElement myElement=driver.findElement(By.xpath("//input[@type='email']"));
-			myElement.sendKeys("abm231c@gmail.com");
+			myElement.sendKeys("abqwmqx231c@gmail.com");
 			myElement.sendKeys(Keys.ENTER);
 			myElement=driver.findElement(By.xpath("//input[@type='password']"));
-			myElement.sendKeys("abqbc123");
+			myElement.sendKeys("aqzbcrqbc123");
 			myElement.sendKeys(Keys.ENTER);
 			Thread.sleep(5000);
 			//Click Login Button
 			driver.findElement(By.xpath("//a[@id='login-btn']")).click();
-			Thread.sleep(8000);
+			String logintitle = driver.getTitle();
+			System.out.println("Log in Page title is -- "+logintitle);
+			Thread.sleep(2000);
+			driver.switchTo().alert().accept();
+			driver.close();
 			
 			
 					
